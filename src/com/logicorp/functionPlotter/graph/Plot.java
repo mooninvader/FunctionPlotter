@@ -39,25 +39,27 @@ public class Plot extends Pane {
   
         while (x < xMax) {
            try {
+                double mx = mapX(x, axes);
+                double my = mapY(f.apply(x), axes);
+                
                 if (firstDotPlotted == true) {
                     path.getElements().add(
                             new LineTo(
-                                    mapX(x, axes), mapY(f.apply(x), axes)
+                                    mx,my
                             )
                     );
                 } else {
                     path.getElements().add(
                             new MoveTo(
-                                    mapX(x, axes), mapY(f.apply(x), axes)
+                                    mx, my
                             )
                     );
                             firstDotPlotted=true;
                 }
 
         } catch (Exception e) {
-               System.out.println(e.getMessage());
-               // firstDotPlotted=false;
-            } finally {
+               // not in domain of definition 
+            } finally {                
                 x += xInc;
             }
         }

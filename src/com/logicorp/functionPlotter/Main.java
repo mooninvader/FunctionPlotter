@@ -13,8 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import net.objecthunter.exp4j.Expression;
-import net.objecthunter.exp4j.ExpressionBuilder;
+
 
 /**
  *
@@ -28,7 +27,6 @@ public class Main extends Application {
         
         Parser parser = new Parser();
         String Expression = "(1+x)";
-    //"(1-x)*(x-3)/(2-x)"
 
         BorderPane bp = new BorderPane();
         Pane topPane = new Pane();
@@ -51,6 +49,7 @@ public class Main extends Application {
 
         Plot plot;
 
+       
         Axes axes = new Axes(
                 800, 600,
                 -16, 16, 1,
@@ -81,13 +80,7 @@ public class Main extends Application {
                     new Plot(
                     x -> {
                         parser.setValue("x", x);
-                        return parser.eval(tf.getText());
-//                          double result = new ExpressionBuilder(tf.getText())
-//        .variables("x")
-//        .build()
-//        .setVariable("x", x)
-//        .evaluate() ;
-//        return result;                
+                        return parser.eval(tf.getText());             
                     },
                     -16, 16, 0.01,
                     axes

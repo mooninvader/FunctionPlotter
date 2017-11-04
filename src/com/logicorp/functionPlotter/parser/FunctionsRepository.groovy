@@ -23,7 +23,7 @@ class FunctionsRepository {
                        '-': new Operator(core : {double p1,double p2 -> p1-p2} ,precedence :1,associativity :Associativity.LEFT), 
                        '*': new Operator(core : {double p1,double p2 -> p2*p1} ,precedence:2,associativity :Associativity.LEFT), 
                        '/': new Operator(core : {double p1,double p2 -> p1/p2} ,precedence :2,dod :{p1,p2 ->  p2!=0},associativity :Associativity.LEFT), 
-                       '^': new Operator(core : {double p1,double p2 -> Math.pow(p1,p2)} ,precedence :3,associativity :Associativity.RIGHT), 
+                       '^': new Operator(core : {double p1,double p2 -> Math.pow(p1,p2)} ,precedence :3,associativity :Associativity.RIGHT, dod : {p1,p2 -> ! Double.isNaN(Math.pow(p1,p2))}), 
                       ] 
 
 }
